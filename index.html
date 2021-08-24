@@ -7,6 +7,38 @@
     <title>970C, a friendly robot.</title>
 </head>
 <body>
-    <h1>Hi there.</h1>
+    <h1>970C: Hi there.</h1>
+    <style>
+        h1 {
+            position: relative;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        h1:after {
+            content: "";
+            white-space: pre;
+            display: inline-block;
+            width:0.25rem;
+            height:2.5rem;
+            margin-bottom: -.5rem;
+            margin-left: .25rem;
+            background: black;
+            animation: blinkyMcBlinkerson 1s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes blinkyMcBlinkerson {
+            0% {
+                background: #ccc;
+            }
+            49% {
+                background: #ccc;
+            }
+            50% {
+                background: none;
+            }
+            100% {
+                background: none;
+            }
+        }
+    </style>
 </body>
 </html>
