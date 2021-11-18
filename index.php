@@ -4,25 +4,26 @@
  * in the version control history of the file, available from the following
  * original location:
  *
- * <https://github.com/picocms/Pico/blob/master/index.php.dist>
+ * <https://github.com/picocms/Pico/blob/master/index.php>
  *
  * SPDX-License-Identifier: MIT
  * License-Filename: LICENSE
  */
 
-// check PHP platform requirements
-if (PHP_VERSION_ID < 50306) {
-    die('Pico requires PHP 5.3.6 or above to run');
-}
-if (!extension_loaded('dom')) {
-    die("Pico requires the PHP extension 'dom' to run");
-}
-if (!extension_loaded('mbstring')) {
-    die("Pico requires the PHP extension 'mbstring' to run");
-}
-
 // load dependencies
-require_once(__DIR__ . '/vendor/autoload.php');
+if (is_file(__DIR__ . '/vendor/autoload.php')) {
+    // composer root package
+    require_once(__DIR__ . '/vendor/autoload.php');
+} elseif (is_file(__DIR__ . '/../../../vendor/autoload.php')) {
+    // composer dependency package
+    require_once(__DIR__ . '/../../../vendor/autoload.php');
+} else {
+    die(
+        "Cannot find 'vendor/autoload.php'. If you're using a composer-based Pico install, run `composer install`. "
+        . "If you're rather trying to use one of Pico's pre-built release packages, make sure to download Pico's "
+        . "latest release package named 'pico-release-v*.tar.gz' (don't download a source code package)."
+    );
+}
 
 // instance Pico
 $pico = new Pico(
