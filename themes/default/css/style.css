@@ -19,7 +19,6 @@
     border: 0 none;
     margin: 0;
     padding: 0;
-    color: gray;
 }
 
 .hidden { display: none !important; }
@@ -80,7 +79,9 @@ body { display: flex; flex-direction: column; }
 
 #logo + #title h1 { margin: 0.8rem 0; }
 #logo + #title.tagline h1 { margin: 0; }
-
+h1 {
+    color:red;
+}
 #nav {
     padding: 3em 0;
     text-align: right;
